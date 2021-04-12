@@ -14279,7 +14279,8 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Consider the situation when we are looking for change with $k=\$12$.  The Greedy algorithm will return $G(k) = 6$ for $\$12 = \$7 + \$1 + \$1 + \$1 + \$1 + \$1$, but an optimized algorithm $N(k)=3$ with the solution $\$12 = \$4 + \$4 + \$4$. Q.E.D</p>
+<p>Code for solving this problem is found at the end of the document.</p>
+<p>Consider the situation when we are looking for change with $k=\$416$.  The Greedy algorithm will return $G(k) = 7$ for $\$416 = \$356 + \$28 + \$13 + \$7 + \$1 + \$1 + \$1$, but an optimized algorithm $N(k)=5$ with the solution $\$416 = \$91 + \$91 + \$91 + \$91 + \$52$. Q.E.D</p>
 
 </div>
 </div>
@@ -14290,7 +14291,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">greedy</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">selected</span><span class="p">,</span> <span class="n">remain</span><span class="p">):</span>
@@ -14306,7 +14307,7 @@ a.anchor-link {
     
 <span class="n">S</span><span class="o">=</span><span class="p">[]</span>
 <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
-<span class="n">Goal</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">Goal</span> <span class="o">=</span> <span class="mi">416</span>
 <span class="n">greedy</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Goal</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
 </pre></div>
@@ -14328,7 +14329,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[13, 7, 4, 1]
+<pre>[365, 28, 13, 7, 1, 1, 1]
 </pre>
 </div>
 </div>
@@ -14597,6 +14598,87 @@ Final Answer: N(118) =  4
 
 Final Answer: N(118) =  4 
 with:  $118 = $1 + $13 + $13 + $91
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="The-code-below-calculates-the-first-instance-when-the-greedy-algorithm-and-the-optimized-algorithm-do-not-match-in-problem-A.">The code below calculates the first instance when the greedy algorithm and the optimized algorithm do not match in problem A.<a class="anchor-link" href="#The-code-below-calculates-the-first-instance-when-the-greedy-algorithm-and-the-optimized-algorithm-do-not-match-in-problem-A.">&#182;</a></h4>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">greedy</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">selected</span><span class="p">,</span> <span class="n">remain</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">remain</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> 
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">remain</span><span class="p">:</span>
+            <span class="n">selected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">greedy</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">selected</span><span class="p">,</span> <span class="n">remain</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">bottomUp</span><span class="p">(</span><span class="n">money</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">goal</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">solutions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">goal</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">goal</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">minimum</span> <span class="o">=</span> <span class="n">goal</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">money</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">c</span><span class="p">]:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="n">count</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="n">m</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">minimum</span><span class="p">:</span>
+                <span class="n">minimum</span> <span class="o">=</span> <span class="n">temp</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="n">count</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">minimum</span>
+        <span class="n">solutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span> 
+<span class="c1">#     print(count)</span>
+    <span class="k">return</span> <span class="n">count</span><span class="p">[</span><span class="n">goal</span><span class="p">]</span>
+
+<span class="n">goal</span> <span class="o">=</span> <span class="mi">118</span>
+<span class="n">money</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span>
+
+<span class="n">answer</span> <span class="o">=</span> <span class="n">bottomUp</span><span class="p">(</span><span class="n">money</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+<span class="c1"># print(&quot;\nFinal Answer: N(&quot; + str(goal) + &quot;) = &quot;, answer)</span>
+
+<span class="n">goal</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">greedy</span><span class="p">(</span><span class="n">money</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">bottomUp</span><span class="p">(</span><span class="n">money</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">goal</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>416
 </pre>
 </div>
 </div>
